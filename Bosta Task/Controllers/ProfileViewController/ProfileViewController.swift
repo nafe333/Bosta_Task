@@ -51,26 +51,26 @@ class ProfileViewController: UIViewController {
     
     // MARK: - Bind ViewModel
     private func bindViewModel() {
+        // Bind user data to UI
         viewModel.user
             .compactMap { $0 }
-            .subscribe(onNext: { [weak self] user in
-                print(user.name)
-                print(user.address)
-                self?.nameLabel.text = user.name
-                self?.addressLabel.text = user.address.fullAddress
+            .subscribe(onNext: { [weak self] in
+                self?.nameLabel.text = $0.name
+                self?.addressLabel.text = $0.address.fullAddress
             })
             .disposed(by: disposeBag)
 
+        // Bind albums to table view
         viewModel.albums
-            .bind(to: tableView.rx.items(cellIdentifier: "cell")) { _, album, cell in
-                cell.textLabel?.text = album.title
-            }
+            .bind(to: tableView.rx.items(cellIdentifier: "cell")) { $2.textLabel?.text = $1.title }
             .disposed(by: disposeBag)
 
+        // Handle album selection
         tableView.rx.modelSelected(Album.self)
-            .subscribe(onNext: { [weak self] album in
+            .subscribe(onNext: { [weak self] in
                 let albumVC = AlbumsViewController(nibName: "AlbumsViewController", bundle: nil)
-                albumVC.albumId = album.id
+                albumVC.albumId = $0.id
+                albumVC.albumTitle = $0.title
                 self?.navigationController?.pushViewController(albumVC, animated: true)
             })
             .disposed(by: disposeBag)
