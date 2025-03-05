@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoViewController" customModule="BostaTask" customModuleProvider="target">
             <connections>
                 <outlet property="photoImageView" destination="c3R-dL-zuR" id="275-d1-02d"/>
+                <outlet property="scrollView" destination="6kI-l4-Q9P" id="i74-XO-3e0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,17 +20,32 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c3R-dL-zuR">
-                    <rect key="frame" x="16" y="139" width="361" height="599"/>
-                </imageView>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6kI-l4-Q9P">
+                    <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c3R-dL-zuR">
+                            <rect key="frame" x="16" y="97" width="361" height="599"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="c3R-dL-zuR" firstAttribute="centerX" secondItem="6kI-l4-Q9P" secondAttribute="centerX" id="1Lj-2J-Boi"/>
+                        <constraint firstItem="c3R-dL-zuR" firstAttribute="centerY" secondItem="6kI-l4-Q9P" secondAttribute="centerY" id="7MH-Yy-agp"/>
+                        <constraint firstAttribute="bottom" secondItem="c3R-dL-zuR" secondAttribute="bottom" constant="97" id="TAd-c2-ooF"/>
+                        <constraint firstItem="c3R-dL-zuR" firstAttribute="leading" secondItem="cat-KM-KJe" secondAttribute="leading" constant="16" id="WzL-eh-Nsz"/>
+                        <constraint firstItem="c3R-dL-zuR" firstAttribute="top" secondItem="cat-KM-KJe" secondAttribute="top" constant="97" id="akh-6a-JG5"/>
+                        <constraint firstAttribute="trailing" secondItem="c3R-dL-zuR" secondAttribute="trailing" constant="16" id="i6u-yX-7Xe"/>
+                    </constraints>
+                    <viewLayoutGuide key="contentLayoutGuide" id="sdU-qU-xpK"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="cat-KM-KJe"/>
+                </scrollView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="c3R-dL-zuR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="HT3-tv-5a7"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="c3R-dL-zuR" secondAttribute="trailing" constant="16" id="Hvh-Ck-Rfu"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="c3R-dL-zuR" secondAttribute="bottom" constant="80" id="XJ9-Wt-K4p"/>
-                <constraint firstItem="c3R-dL-zuR" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="80" id="ikc-lN-PmD"/>
+                <constraint firstAttribute="bottom" secondItem="6kI-l4-Q9P" secondAttribute="bottom" id="GUf-ti-ofC"/>
+                <constraint firstItem="6kI-l4-Q9P" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="biu-Yt-F7o"/>
+                <constraint firstItem="6kI-l4-Q9P" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jnm-13-NtO"/>
+                <constraint firstItem="6kI-l4-Q9P" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ys1-9w-okL"/>
             </constraints>
             <point key="canvasLocation" x="52.671755725190835" y="-11.267605633802818"/>
         </view>

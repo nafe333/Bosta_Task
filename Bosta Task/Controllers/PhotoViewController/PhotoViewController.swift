@@ -8,10 +8,12 @@
 import UIKit
 import Nuke
 
-class PhotoViewController: UIViewController {
+class PhotoViewController: UIViewController, UIScrollViewDelegate {
     
     //MARK: - Outlets
     @IBOutlet weak var photoImageView: UIImageView!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
     
     //MARK: - Properties
     var photoUrl: URL?
@@ -42,6 +44,16 @@ class PhotoViewController: UIViewController {
             let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
             present(activityViewController, animated: true, completion: nil)
         }
+    
+    func setupScrollView(){
+        scrollView.delegate = self
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 5.0
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return photoImageView
+    }
 }
 
 
