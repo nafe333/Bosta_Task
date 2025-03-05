@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Nuke
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,10 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         let rootVC = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
         let navigationController = UINavigationController(rootViewController: rootVC)
-
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-
         return true
     }
 }

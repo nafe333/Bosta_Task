@@ -6,24 +6,43 @@
 //
 
 import UIKit
+import Nuke
 
 class PhotoViewController: UIViewController {
-
+    
+    //MARK: - Outlets
+    @IBOutlet weak var photoImageView: UIImageView!
+    
+    //MARK: - Properties
+    var photoUrl: URL?
+    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if let photoUrl = photoUrl {
+            Nuke.loadImage(with: photoUrl, into: photoImageView) { [weak self] result in
+                if case .failure = result {
+                    self?.photoImageView.image = UIImage(named: "testImage") 
+                }
+            }
+        } else {
+            photoImageView.image = UIImage(named: "testImage")
+        }
+        let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareImage))
+                navigationItem.rightBarButtonItem = shareButton
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+       //MARK: - Functions
+    @objc private func shareImage() {
+            guard let image = photoImageView.image else {
+                print("No image to share")
+                return
+            }
+            
+            let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+            present(activityViewController, animated: true, completion: nil)
+        }
 }
+
+
+

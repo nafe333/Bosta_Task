@@ -14,17 +14,16 @@ class ProfileViewModel {
     let albums = BehaviorRelay<[Album]>(value: [])
     
     func loadUserData(userId: Int) {
-            NetworkManager.shared.fetchUser(userId: userId)
-                .subscribe { [weak self] result in
-                    self?.user.accept(result)
-                }
-                .disposed(by: disposeBag)
-
-            NetworkManager.shared.fetchAlbums(userId: userId)
-                .subscribe { [weak self] result in
-                    self?.albums.accept(result)
-                }
-                .disposed(by: disposeBag)
-        }
-
+        NetworkManager.shared.fetchUser(userId: userId)
+            .subscribe { [weak self] result in
+                self?.user.accept(result)
+            }
+            .disposed(by: disposeBag)
+        
+        NetworkManager.shared.fetchAlbums(userId: userId)
+            .subscribe { [weak self] result in
+                self?.albums.accept(result)
+            }
+            .disposed(by: disposeBag)
+    }
 }

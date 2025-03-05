@@ -11,4 +11,6 @@ pod 'Moya'
 pod 'Moya/RxSwift'
 pod 'RxSwift'
 pod 'RxCocoa'
+pod 'Nuke'
+
 end

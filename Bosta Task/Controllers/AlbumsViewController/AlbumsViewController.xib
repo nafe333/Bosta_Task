@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlbumsViewController" customModule="Bosta_Task" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlbumsViewController" customModule="BostaTask" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="uLO-fx-wZ7" id="Mop-Km-dgQ"/>
                 <outlet property="searchBar" destination="V7U-t0-mFO" id="bE3-ti-2qW"/>
@@ -23,9 +23,6 @@
                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="V7U-t0-mFO">
                     <rect key="frame" x="0.0" y="71" width="393" height="56"/>
                     <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="0oK-5w-Q15"/>
-                    </connections>
                 </searchBar>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="uLO-fx-wZ7">
                     <rect key="frame" x="0.0" y="127" width="393" height="691"/>

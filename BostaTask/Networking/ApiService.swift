@@ -21,11 +21,11 @@ extension APIService: TargetType {
     var path: String {
         switch self {
         case .getUser(let userId):
-                    return "\(APIConstants.Endpoints.users)/\(userId)"
-                case .getAlbums:
-                    return APIConstants.Endpoints.albums
-                case .getPhotos:
-                    return APIConstants.Endpoints.photos
+            return "\(APIConstants.Endpoints.users)/\(userId)"
+        case .getAlbums:
+            return APIConstants.Endpoints.albums
+        case .getPhotos:
+            return APIConstants.Endpoints.photos
         }
     }
     

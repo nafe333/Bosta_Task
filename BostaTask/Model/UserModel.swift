@@ -13,10 +13,13 @@ struct User: Decodable {
 }
 struct Address: Decodable {
     let street: String
+    let suite: String
     let city: String
+    let zipcode: String
+ 
     
     var fullAddress: String {
-        return "\(street), \(city)"
+        return "\(street), \(suite), \(city), \(zipcode)"
     }
 }
 

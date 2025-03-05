@@ -7,6 +7,7 @@
 
 import Foundation
 import Moya
+
 enum APIService {
     case getUser(userId: Int)
     case getAlbums(userId: Int)
@@ -35,18 +36,16 @@ extension APIService: TargetType {
     
     var task: Moya.Task {
         switch self {
-                case .getUser:
-                    return .requestPlain
-                case .getAlbums(let userId):
-                    return .requestParameters(parameters: ["userId": userId], encoding: URLEncoding.default)
-                case .getPhotos(let albumId):
-                    return .requestParameters(parameters: ["albumId": albumId], encoding: URLEncoding.default)
-                }
+        case .getUser:
+            return .requestPlain
+        case .getAlbums(let userId):
+            return .requestParameters(parameters: ["userId": userId], encoding: URLEncoding.default)
+        case .getPhotos(let albumId):
+            return .requestParameters(parameters: ["albumId": albumId], encoding: URLEncoding.default)
+        }
     }
     
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         return ["Content-Type": "application/json"]
     }
-    
-    
 }
